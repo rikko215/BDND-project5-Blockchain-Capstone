@@ -10,53 +10,52 @@ The detail steps of the project is as follows:
 
 It's important that before somebody can actually list a home in our marketplace, they'll have to ensure that they actually own the property and they'll be doing that do the verification using Zokrates
 
-# How to install, test, and run
-Run `npm install` before the test.
-Navigate to the `eth-contracts` folder in your repo, and type `truffle test` so that all the following javascript test code will run.
+# Prerequisits
+1. Run `npm install` before the test.
+ - `npm install --save truffle-hdwallet-provider`
+ - `npm install lite-server --save-dev`
+2. Navigate to the `eth-contracts` folder in your repo, and type `truffle test` so that all the following javascript test code will run.
 - `TestERC721Mintable.js`
 - `TestSquareVerifier.js`
-- `TestSolnSquareVerifier.js` : The final test will be the combination of both the ERC721 token and the code that we mixed in Zokrates.
-To run each test individually, run `truffle test test/TestERC721Mintable.js`.
+- `TestSolnSquareVerifier.js` 
+ To run each test individually, run `truffle test test/TestERC721Mintable.js`.
 
-npm install --save truffle-hdwallet-provider
-npm install lite-server --save-dev
-truffle migrate --network rinkeby --reset
+## Implement Zokrates
+| Contract Name | Contract Address |
+| ------------- | ------------- |
+| Step 1: Install Docker | You can find instructions for installing it [here](https://docs.docker.com/install/)|
+| Step 2: Run ZoKrates | docker run -v /Users/rinatakahashi/Desktop/Development/Udacity/6.Capstone/BDND-project5-Blockchain-Capstone:/home/zokrates/code -ti zokrates/zokrates /bin/bash| 
+| Step 3: A Quick Overview of the ZoKrates Process | 1.Compile Program</br> 2.Trusted Setup</br>3.Compute-Witness</br>4.Generate-Proof</br>5.Export-Verifier |
+| Step 4: Compile the program written in ZoKrates DSL | ~/zokrates compile -i square.code |
+| Step 5: Generate the Trusted Setup | ~/zokrates setup |
+| Step 6: Compute Witness | ~/zokrates compute-witness -a 3 9 |
+| Step 7: Generate Proof | ~/zokrates generate-proof |
+| Step 8: Export Verifier | ~/zokrates export-verifier|
 
-### Zokrates
-```
-docker run -v /Users/rinatakahashi/Desktop/Development/Udacity/6.Capstone/BDND-project5-Blockchain-Capstone:/home/zokrates/code -ti zokrates/zokrates /bin/bash
-```
+## Deploying
+`truffle migrate --network rinkeby --reset`
 
-### Step 4: Compile the program written in ZoKrates DSL
+## Mint Tokens
+Mint 10 tokens using `scripts/mint.js`
 ```
-~/zokrates compile -i square.code
-```
-
-### Step 5: Generate the Trusted Setup
-```
-~/zokrates setup
-```
-
-### Step 6: Compute Witness
-```
-~/zokrates compute-witness -a 3 9
-```
-
-### Step 7: Generate Proof
-```
-~/zokrates generate-proof
+export INFURA_KEY="<infura_key>"
+export MNEMONIC="<metmask_mnemonic>"
+truffle deploy --network rinkeby
+export OWNER_ADDRESS="<my_address>"
+export NFT_CONTRACT_ADDRESS="<deployed_contract_address>"
+export NETWORK="rinkeby"
+node scripts/mint.js
 ```
 
-### Step 8: Export Verifier
-```
-~/zokrates export-verifier
-```
+# Deoloyed Contracts Info
+- Contract Address on Rinkeby Network
 
-# Write-up2
-- Contract Addresses
-Migrations  0x04E6fdDd5DBEcADdd4d86dD463eB9a4F26c7d117
-Verifier    0x4b156d06447D0bBAD01CC38A97b83362576a8c70
-SolnSquareVerifier  0x07e9FDd2befe6bA9A4d52Ea5baC78dec70dbe317
+| Contract Name | Contract Address |
+| ------------- | ------------- |
+| Migrations | 0x04E6fdDd5DBEcADdd4d86dD463eB9a4F26c7d117 | 
+| Verifier | 0x4b156d06447D0bBAD01CC38A97b83362576a8c70 | 
+| SolnSquareVerifier | 0x07e9FDd2befe6bA9A4d52Ea5baC78dec70dbe317 | 
+
 
 - Contract Abi's
 ```
