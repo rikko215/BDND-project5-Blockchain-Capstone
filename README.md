@@ -20,7 +20,7 @@ The detail steps of the project is as follows:
 | Step 1: Install Docker | You can find instructions for installing it [here](https://docs.docker.com/install/)|
 | Step 2: Run ZoKrates | docker run -v /Users/rinatakahashi/Desktop/Development/Udacity/6.Capstone/BDND-project5-Blockchain-Capstone:/home/zokrates/code -ti zokrates/zokrates /bin/bash| 
 | Step 3: A Quick Overview of the ZoKrates Process | 1.Compile Program</br> 2.Trusted Setup</br>3.Compute-Witness</br>4.Generate-Proof</br>5.Export-Verifier |
-| Step 4: Compile the program written in ZoKrates DSL | ~/zokrates compile -i square.code |
+| Step 4: Compile the program written in ZoKrates DSL | cd code/zokrates/code/square/ </br> ~/zokrates compile -i square.code |
 | Step 5: Generate the Trusted Setup | ~/zokrates setup |
 | Step 6: Compute Witness | ~/zokrates compute-witness -a 3 9 |
 | Step 7: Generate Proof | ~/zokrates generate-proof |
