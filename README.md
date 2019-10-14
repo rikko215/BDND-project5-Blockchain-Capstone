@@ -18,7 +18,7 @@ The detail steps of the project is as follows:
 | Contract Name | Contract Address |
 | ------------- | ------------- |
 | Step 1: Install Docker | You can find instructions for installing it [here](https://docs.docker.com/install/)|
-| Step 2: Run ZoKrates | docker run -v /Users/rinatakahashi/Desktop/Development/Udacity/6.Capstone/BDND-project5-Blockchain-Capstone:/home/zokrates/code -ti zokrates/zokrates /bin/bash| 
+| Step 2: Run ZoKrates | docker run -v <Your path to zokrates>:/home/zokrates/code -ti zokrates/zokrates /bin/bash| 
 | Step 3: A Quick Overview of the ZoKrates Process | 1.Compile Program</br> 2.Trusted Setup</br>3.Compute-Witness</br>4.Generate-Proof</br>5.Export-Verifier |
 | Step 4: Compile the program written in ZoKrates DSL | cd code/zokrates/code/square/ </br> ~/zokrates compile -i square.code |
 | Step 5: Generate the Trusted Setup | ~/zokrates setup |
@@ -41,15 +41,14 @@ export NETWORK="rinkeby"
 node scripts/mint.js
 ```
 
-# Deoloyed Contracts Info
+# Deployed Contracts Info
 - Contract Address on Rinkeby Network
 
 | Contract Name | Contract Address |
 | ------------- | ------------- |
-| Migrations | 0x04E6fdDd5DBEcADdd4d86dD463eB9a4F26c7d117 | 
-| Verifier | 0x4b156d06447D0bBAD01CC38A97b83362576a8c70 | 
-| SolnSquareVerifier | 0x07e9FDd2befe6bA9A4d52Ea5baC78dec70dbe317 | 
-
+| Migrations | 0x96155f5AB3bFe1143a1a1EE8bef2b4Ba135F5cD4 |
+| Verifier | 0xAdeA83998517C60Dd7eb9779C5B660C4E4d58D09 |
+| SolnSquareVerifier | 0x489936E80a7a93513f5c0ED59Bb75308b8E9a204 |
 
 - Contract Abi's
 ```
@@ -263,8 +262,9 @@ node scripts/mint.js
     type: 'function' } ]
 ```
 - OpenSea MarketPlace Storefront link's
-Marketplace Seller: https://rinkeby.opensea.io/accounts/0xb2d2a0c2bd96197922d2c6e0f2fdfa61f8ea3768/unidentified-contract-426
-Marketplace Buyer:
+ * Marketplace Seller: https://rinkeby.opensea.io/accounts/0xb2d2a0c2bd96197922d2c6e0f2fdfa61f8ea3768/unidentified-contract-426
+ * Marketplace Buyer: https://rinkeby.opensea.io/assets/0xd1afda964881a5773678bea277f4b61bb69a3241/0
+
 
 # Versions
 - Truffle v5.0.36 (core: 5.0.36)

@@ -1,5 +1,4 @@
 const HDWalletProvider = require("truffle-hdwallet-provider")
-// const zokratesProof = require("../zokrates/code/square/proof.json");
 const zokratesProof = [
     require("./proof_0.json"),
     require("./proof_1.json"),
@@ -37,10 +36,14 @@ async function main() {
     if (CONTRACT_ADDRESS) {
         const r2token = new web3Instance.eth.Contract(ABI, CONTRACT_ADDRESS, { gasLimit: "1000000" })
         // tokens issued directly to the owner.
-        for (let i = 1; i < i + MINT_COUNT ; i++) {
+        for (let i = 0; i < MINT_COUNT ; i++) {
             try {
                 let proofs = Object.values(zokratesProof[i].proof);
                 let inputs = zokratesProof[i].inputs;
+                console.log("OWNER_ADDRESS "+ OWNER_ADDRESS + "\n");
+                console.log("i "+i+ "\n");
+                console.log("proofs "+ proofs+ "\n");
+                console.log("inputs "+ inputs+ "\n");
                 let tx = await r2token.methods.addSolution(OWNER_ADDRESS, i, ...proofs, inputs).send({ from: OWNER_ADDRESS });
                 console.log("Solution added. Transaction: " + tx.transactionHash);
                 tx = await r2token.methods.mint(OWNER_ADDRESS, i).send({ from: OWNER_ADDRESS });
